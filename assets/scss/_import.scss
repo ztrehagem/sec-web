@@ -1,0 +1,9 @@
+@import "_colors.scss";
+
+@mixin clearfix {
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
