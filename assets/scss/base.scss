@@ -1,5 +1,134 @@
 @import "_import.scss";
 
 body {
+    font-family: 'Sarpanch', Meiryo, 'Hiragino Kaku Gothic ProN', sans-serif;
     background-color: $dark;
+    color: $light;
+    margin: 0;
+    padding: 0;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    a {
+        color: $light;
+    }
+}
+
+#wrapper {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+header {
+    display: flex;
+
+    .title {
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+
+        > * {
+            display: inline-block;
+            white-space: nowrap;
+            font-family: 'Sarpanch', sans-serif;
+        }
+
+        > h1 {
+            font-size: 3rem;
+            margin: 0 1rem;
+        }
+
+        > h2 {
+            font-size: 1rem;
+            margin: 0 1rem;
+        }
+    }
+
+    .link {
+        padding: 0 1rem;
+        flex: 0 0 auto;
+
+        display: flex;
+        align-items: center;
+
+        a {
+            color: $light;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: $transition;
+
+            &:hover {
+                color: #55acee;
+            }
+        }
+    }
+}
+
+nav {
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+
+        li {
+            flex: 1 1 auto;
+            text-align: center;
+            max-width: 120px;
+
+            a {
+                font-family: 'Sarpanch', sans-serif;
+
+                display: block;
+                padding: 0.5em 1em;
+                margin: 0 0.5em;
+                text-decoration: none;
+                border: 1px solid $light;
+                background-color: $dark;
+                color: $light;
+                transition: $transition;
+                box-shadow: inset 0 0 5px $light;
+
+                &:hover, &.here {
+                    background-color: $light;
+                    color: $dark;
+                }
+
+                &.here {
+                    box-shadow: inset 0 0 5px $dark;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.lines {
+    position: relative;
+    width: 88%;
+    border-bottom: 1px solid $gray;
+    margin: 2rem auto;
+
+    &::before, &::after {
+        display: block;
+        content: "";
+        width: 100%;
+        border-bottom: 1px solid $gray;
+        position: absolute;
+    }
+
+    &::before {
+        top: -3px;
+        left: -4%;
+    }
+
+    &::after {
+        bottom: -4px;
+        right: -4%;
+    }
 }
