@@ -4,4 +4,10 @@ block var
     - page.title = 'MEMBER'
 block contents
     div.lines
-        // angular
+    section#member(ng-controller="memberController as c")
+        h3 MEMBER
+        div.inner
+            article(ng-repeat="a in c.list")
+                h4(ng-bind="a.name")
+                // modal?
+    div.lines

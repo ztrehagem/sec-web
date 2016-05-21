@@ -103,6 +103,27 @@ nav {
     }
 }
 
+section {
+    h3 {
+        text-align: center;
+    }
+
+    .inner {
+        margin: 0 auto;
+        width: 90%;
+
+        &.fit {
+            width: auto;
+            max-width: 90%;
+            display: table;
+        }
+    }
+
+    .text-center {
+        text-align: center;
+    }
+}
+
 footer {
     padding: 1rem;
     text-align: center;

@@ -1,0 +1,74 @@
+@import "_import.scss";
+
+section#activity {
+    article {
+        padding: 1rem;
+        margin: 1rem 0;
+        // background-color: $light;
+        // color: $dark;
+
+        box-shadow: 0 0 3px $light;
+        transition: $transition;
+
+        // a {
+        //     color: $dark;
+        // }
+
+        &:hover {
+            box-shadow: 0 0 12px $light;
+        }
+
+        .heading {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+
+            > * {
+                margin: 0;
+            }
+
+            > :last-child {
+                flex: 1 1 auto;
+                text-align: right;
+            }
+        }
+
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .image {
+                display: table;
+                max-width: 200px;
+                max-height: 200px;
+                margin: 10px;
+                overflow: hidden;
+
+                img {
+                    border: none;
+                    width: 100%;
+                    vertical-align: bottom;
+                }
+            }
+        }
+
+        .links {
+            a {
+                display: inline-block;
+                margin: 0.5rem;
+                padding: 5px;
+                text-decoration: none;
+                border: 1px solid $light;
+                background-color: $light;
+                color: $dark;
+                transition: $transition;
+
+                &:hover {
+                    background-color: $dark;
+                    color: $light;
+                }
+            }
+        }
+    }
+}

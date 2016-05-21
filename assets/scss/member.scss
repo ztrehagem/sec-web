@@ -1,0 +1,31 @@
+@import "_import.scss";
+
+section#member {
+    .inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        article {
+            width: 200px;
+            box-shadow: 0 0 5px $light;
+            margin: 5px;
+            word-wrap: break-word;
+
+            h4 {
+                text-align: center;
+                margin: 0;
+            }
+
+            .data {
+                .key {
+                    font-weight: bold;
+                }
+
+                .value {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

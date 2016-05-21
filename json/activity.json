@@ -1,0 +1,34 @@
+[
+    {
+        "date": "2016/03/24",
+        "title": "第3回日本eスポーツ学生選手権LoL部門",
+        "description": [
+            ["第3回日本eスポーツ学生選手権LoL部門(旧LoL学生選手権)にSECとして出場しました！"],
+            ["やみほん、てらしゅん、ume、fujisawa、Lettelの5人で参加しました。 結果は準決勝敗退と、少々悔しさが残る結果となりました。 次の大会ではよりパワーアップしたチームを見せれるようにメンバー全員で練習していきたいですね！"],
+            ["大会に参加した方々、運営の方々、応援してくれた方々、ありがとうございました。"]
+        ],
+        "links": {
+            "大会HP": "http://japanesportsstuden.wix.com/e-students",
+            "配信録画": "https://www.twitch.tv/jesllol/v/56282527"
+        },
+        "images": [
+            "/img/gakusei3-1.jpg",
+            "/img/gakusei3-2.jpg"
+        ]
+    },{
+        "date": "2015/12/13",
+        "title": "最強ソロレーナー決定戦！",
+        "description": [
+            ["Intel Club Extreme GAMERS WORLDにて行われた最強ソロレーナー決定戦！にて、fujisawaが出場しました。"],
+            ["結果は優勝！決勝戦の生放送はLoLをやったことがない大学の友達も大勢見てくれていました。 fujisawaは「aniviaで勝ててよかった。色々なサイトで取り上げられてて恥ずかしい。賞金は椅子を買うのに使いたい。」とコメントしてくれました。 本当におめでとう！！"],
+            ["大会に参加した方々、運営の方々、応援してくれた方々、ありがとうございました。"]
+        ],
+        "links": {
+            "大会HP": "https://lol1vs1.game-league.jp/"
+        },
+        "images": [
+            "/img/151213_solo1.jpg",
+            "/img/151213_solo2.jpg"
+        ]
+    }
+]

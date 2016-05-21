@@ -4,4 +4,19 @@ block var
     - page.title = 'ACTIVITY'
 block contents
     div.lines
-        // angular
+    section#activity(ng-controller="activityController as c")
+        h3 ACTIVITY
+        div.inner
+            article(ng-repeat="a in c.list")
+                div.heading
+                    h4(ng-bind="a.title")
+                    h5(ng-bind="a.date")
+                div.images
+                    a.image(ng-repeat="img in a.images" ng-href="{{img}}" target="_blank")
+                        img(ng-src="{{img}}")
+                div.description
+                    p(ng-repeat="p in a.description")
+                        span(ng-bind-html="p|parseParagraph")
+                div.links
+                    a(ng-repeat="(name,url) in a.links" ng-href="{{url}}" target="_blank" ng-bind="name")
+    div.lines
