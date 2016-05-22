@@ -14,7 +14,7 @@ angular.module('app',[
 
     this.list = null;
 
-    $resource('/json/activity.json').query(function(data) {
+    $resource('json/activity.json').query(function(data) {
         c.list = data;
     });
 }])
@@ -24,7 +24,7 @@ angular.module('app',[
 
     this.list = null;
 
-    $resource('/json/member.json').query(function(data) {
+    $resource('json/member.json').query(function(data) {
         c.list = data;
     });
 }])
