@@ -8,12 +8,12 @@ html(lang="ja" ng-app="app")
         meta(name="viewport" content="width=device-width,initial-scale=1.0")
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css")
         link(href="https://fonts.googleapis.com/css?family=Sarpanch" rel="stylesheet" type="text/css")
-        link(rel="stylesheet" href="/css/#{page.name}.css")
-        link(rel="stylesheet" href="/css/base.css")
-        script(src="/lib/angular.min.js")
-        script(src="/lib/angular-sanitize.min.js")
-        script(src="/lib/angular-resource.min.js")
-        script(src="/js/base.min.js")
+        link(rel="stylesheet" href="./css/#{page.name}.css")
+        link(rel="stylesheet" href="./css/base.css")
+        script(src="./lib/angular.min.js")
+        script(src="./lib/angular-sanitize.min.js")
+        script(src="./lib/angular-resource.min.js")
+        script(src="./js/base.min.js")
         title SIT e-Sports Club | #{page.title}
     body
         div#wrapper
@@ -26,9 +26,9 @@ html(lang="ja" ng-app="app")
                         i.fa.fa-fw.fa-twitter
             nav
                 ul
-                    li: a(href="/" class=giveHereClass('index')) TOP
-                    li: a(href="/activity.html" class=giveHereClass('activity')) ACTIVITY
-                    li: a(href="/member.html" class=giveHereClass('member')) MEMBER
+                    li: a(href="./" class=giveHereClass('index')) TOP
+                    li: a(href="./activity.html" class=giveHereClass('activity')) ACTIVITY
+                    li: a(href="./member.html" class=giveHereClass('member')) MEMBER
             block contents
             footer
                 i.fa.fa-fw.fa-copyright

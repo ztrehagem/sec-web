@@ -12,8 +12,8 @@
             "配信録画": "https://www.twitch.tv/jesllol/v/56282527"
         },
         "images": [
-            "/img/gakusei3-1.jpg",
-            "/img/gakusei3-2.jpg"
+            "gakusei3-1.jpg",
+            "gakusei3-2.jpg"
         ]
     },{
         "date": "2015/12/13",
@@ -27,8 +27,8 @@
             "大会HP": "https://lol1vs1.game-league.jp/"
         },
         "images": [
-            "/img/151213_solo1.jpg",
-            "/img/151213_solo2.jpg"
+            "151213_solo1.jpg",
+            "151213_solo2.jpg"
         ]
     }
 ]

@@ -1,0 +1,4 @@
+AuthUserFile "/home/megahertz/megahertz.webcrow.jp/pubic_html/secweb/.htpasswd"
+AuthName SEC-WEB
+AuthType BASIC
+require valid-user

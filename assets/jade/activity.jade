@@ -12,8 +12,8 @@ block contents
                     h4(ng-bind="a.title")
                     h5(ng-bind="a.date")
                 div.images
-                    a.image(ng-repeat="img in a.images" ng-href="{{img}}" target="_blank")
-                        img(ng-src="{{img}}")
+                    a.image(ng-repeat="filename in a.images" ng-href="./img/{{filename}}" target="_blank")
+                        img(ng-src="./img/{{filename}}")
                 div.description
                     p(ng-repeat="p in a.description")
                         span(ng-bind-html="p|parseParagraph")
