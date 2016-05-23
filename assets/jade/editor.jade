@@ -1,0 +1,36 @@
+doctype
+html(lang="ja" ng-app="editor")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width,initial-scale=1.0")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Sarpanch" rel="stylesheet" type="text/css")
+        link(rel="stylesheet" href="./css/base.css")
+        script(src="./lib/angular.min.js")
+        script(src="./lib/angular-sanitize.min.js")
+        script(src="./lib/angular-resource.min.js")
+        script(src="./js/editor.min.js")
+        title SIT e-Sports Club | EDITOR
+    body
+        div#wrapper
+            section#activityEditor(ng-controller="editorController as c")
+                button(ng-click="c.load('json/activity.json')") LOAD &amp; INITIALIZE
+                div.articles
+                    article(ng-repeat="a in c.list")
+                        div
+                            label タイトル
+                            input(type="text" ng-model="a.title")
+                        div
+                            label 日付
+                            input(type="text" ng-model="a.date")
+                        div
+                            label 本文
+                            textarea(ng-model="a.description")
+                        div
+                            label リンク
+                            div(ng-repeat="(title, url) in a.links")
+                                input(type="text" ng-model="title")
+                                input(type="text" ng-model="url")
+                        div
+                            label 画像
+                            input(type="text" ng-repeat="filename in a.images" ng-model="filename")

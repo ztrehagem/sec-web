@@ -8,23 +8,16 @@ section#member {
 
         article {
             width: 200px;
+            height: 200px;
+            overflow: hidden;
             box-shadow: 0 0 5px $light;
             margin: 5px;
             word-wrap: break-word;
 
-            h4 {
-                text-align: center;
-                margin: 0;
-            }
-
-            .data {
-                .key {
-                    font-weight: bold;
-                }
-
-                .value {
-                    text-align: right;
-                }
+            img {
+                width: 100%;
+                vertical-align: bottom;
+                border: none;
             }
         }
     }
