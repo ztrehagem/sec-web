@@ -18,5 +18,5 @@ block contents
                     p(ng-repeat="p in a.description")
                         span(ng-bind-html="p|parseParagraph")
                 div.links
-                    a(ng-repeat="(name,url) in a.links" ng-href="{{url}}" target="_blank" ng-bind="name")
+                    a(ng-repeat="link in a.links" ng-href="{{link[1]}}" target="_blank" ng-bind="link[0]")
     div.lines

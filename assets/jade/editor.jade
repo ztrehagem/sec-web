@@ -6,6 +6,7 @@ html(lang="ja" ng-app="editor")
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css")
         link(href="https://fonts.googleapis.com/css?family=Sarpanch" rel="stylesheet" type="text/css")
         link(rel="stylesheet" href="./css/base.css")
+        link(rel="stylesheet" href="./css/editor.css")
         script(src="./lib/angular.min.js")
         script(src="./lib/angular-sanitize.min.js")
         script(src="./lib/angular-resource.min.js")
@@ -13,24 +14,80 @@ html(lang="ja" ng-app="editor")
         title SIT e-Sports Club | EDITOR
     body
         div#wrapper
-            section#activityEditor(ng-controller="editorController as c")
-                button(ng-click="c.load('json/activity.json')") LOAD &amp; INITIALIZE
-                div.articles
-                    article(ng-repeat="a in c.list")
-                        div
-                            label タイトル
-                            input(type="text" ng-model="a.title")
-                        div
-                            label 日付
-                            input(type="text" ng-model="a.date")
-                        div
-                            label 本文
-                            textarea(ng-model="a.description")
-                        div
-                            label リンク
-                            div(ng-repeat="(title, url) in a.links")
-                                input(type="text" ng-model="title")
-                                input(type="text" ng-model="url")
-                        div
-                            label 画像
-                            input(type="text" ng-repeat="filename in a.images" ng-model="filename")
+            div.lines
+            section#activity-editor(ng-controller="activityEditorController as c")
+                h3 ACTIVITY EDITOR
+                div.inner.fit
+                    button(ng-click="c.load()") LOAD &amp; INITIALIZE
+                    button(ng-if="c.list" ng-click="c.download()") DOWNLOAD
+                div.inner.fit
+                    button(ng-if="c.list" ng-click="c.insertBefore(c,'list',{})") ADD
+                div.inner
+                    article.panel(ng-repeat="a in c.list track by $index" ng-init="open")
+                        div.panel-heading.clickable(ng-click="open = !open")
+                            i.fa.fa-fw.fa-caret-up(ng-if="open")
+                            i.fa.fa-fw.fa-caret-down(ng-if="!open")
+                            span.panel-title {{a.title}} [{{a.date}}]
+                            button.delete(ng-click="c.delete(c.list,$index);$event.stopPropagation()") DELETE
+                        div.list-group(ng-if="open")
+                            div.list-group-item.form-group
+                                label TITLE
+                                input(type="text" ng-model="a.title")
+                            div.list-group-item.form-group
+                                label DATE
+                                input(type="text" ng-model="a.date")
+                            div.list-group-item.form-group
+                                label DESCRIPTION
+                                textarea(rows="6" ng-model="a.description")
+                            div.list-group-item
+                                label LINKS
+                                div.form-group(ng-repeat="link in a.links track by $index")
+                                    input(type="text" ng-model="link[0]")
+                                    input(type="text" ng-model="link[1]")
+                                    button(ng-click="c.up(a.links,$index)"): i.fa.fa-fw.fa-caret-up
+                                    button(ng-click="c.down(a.links,$index)"): i.fa.fa-fw.fa-caret-down
+                                    button(ng-click="c.delete(a.links,$index)") DELETE
+                                button(ng-click="c.insertAfter(a,'links',[])") ADD
+                            div.list-group-item
+                                label IMAGE FILENAME
+                                div.form-group(ng-repeat="filename in a.images track by $index")
+                                    input(type="text" ng-model="filename")
+                                    button(ng-click="c.delete(a.images,$index)") DELETE
+                                button(ng-click="c.insertAfter(a,'images','')") ADD
+                
+            div.lines
+            section#member-editor(ng-controller="memberEditorController as c")
+                h3 MEMBER EDITOR
+                div.inner.fit
+                    button(ng-click="c.load()") LOAD &amp; INITIALIZE
+                    button(ng-if="c.list" ng-click="c.download()") DOWNLOAD
+                div.inner.fit
+                    button(ng-if="c.list" ng-click="c.insertBefore(c,'list',{})") ADD
+                div.inner
+                    article.panel(ng-repeat="a in c.list track by $index" ng-init="open")
+                        div.panel-heading.clickable(ng-click="open = !open")
+                            i.fa.fa-fw.fa-caret-up(ng-if="open")
+                            i.fa.fa-fw.fa-caret-down(ng-if="!open")
+                            span.panel-title {{a.name}}
+                            button.delete(ng-click="c.delete(c.list,$index);$event.stopPropagation()") DELETE
+                        div.list-group(ng-if="open")
+                            div.list-group-item.form-group
+                                label NAME
+                                input(type="text" ng-model="a.name")
+                            div.list-group-item
+                                label PLAYING
+                                div.form-group(ng-repeat="title in a.playing track by $index")
+                                    input(type="text" ng-model="title")
+                                    button(ng-click="c.delete(a.playing,$index)") DELETE
+                                button(ng-click="c.insertAfter(a,'playing','')") ADD
+                            div.list-group-item
+                                label DATA
+                                div.form-group(ng-repeat="data in a.data track by $index")
+                                    input(type="text" ng-model="data[0]")
+                                    input(type="text" ng-model="data[1]")
+                                    button(ng-click="c.delete(a.data,$index)") DELETE
+                                button(ng-click="c.insertAfter(a,'data',[])") ADD
+                            div.list-group-item.form-group
+                                label COMMENT
+                                input(type="text" ng-model="a.comment")
+            div.lines

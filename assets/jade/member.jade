@@ -8,7 +8,7 @@ block contents
         h3 MEMBER
         div.inner
             article(ng-repeat="a in c.list")
-                img(ng-src="{{a.image || 'img/noimg.png'}}")
+                img(ng-src="{{a.image[0] || 'img/noimg.png'}}")
                 // hover -> tooltop(name)
                 // click -> modal(detail)
     div.lines

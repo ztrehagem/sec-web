@@ -2,33 +2,33 @@
     {
         "name": "やみほん",
         "playing": ["LoL","BF4"],
-        "data": {
-            "twitter": "yamiPh0ne",
-            "SummonerName/MainRole": "やみほん/Support"
-        },
+        "data": [
+            ["twitter", "yamiPh0ne"],
+            ["SummonerName/MainRole", "やみほん/Support"]
+        ],
         "comment": "サークル長。twitterアイコンを描いています。最近は主にLoLをやってます。"
     },{
         "name": "ハネ",
         "playing": ["LoL","Hearthstone"],
-        "data": {
-            "twitter": "hanehanero",
-            "SummonerName/MainRole": "hanehanero/Jungle"
-        },
+        "data": [
+            ["twitter", "hanehanero"],
+            ["SummonerName/MainRole", "hanehanero/Jungle"]
+        ],
         "comment": "ホームページ管理者兼twitterアカウント管理者。ジャングル芸人やってます。活動場所は赤バフ前。"
     },{
         "name": "しおんじ",
         "playing": ["LoL","CSGO","Hearthstone"],
-        "data": {
-            "twitter": "sh10nj1",
-            "SummonerName/MainRole": "sh10nj1/Top"
-        },
+        "data": [
+            ["twitter", "sh10nj1"],
+            ["SummonerName/MainRole", "sh10nj1/Top"]
+        ],
         "comment": "芝浦LoL部、女子高生部門チーフです。"
     },{
         "name": "すわくん",
         "playing": ["BF4","FFXIV"],
-        "data": {
-            "twitter": "mhz_univ"
-        },
+        "data": [
+            ["twitter", "mhz_univ"]
+        ],
         "comment": "曲を作ります。HP制作。"
     }
 ]
