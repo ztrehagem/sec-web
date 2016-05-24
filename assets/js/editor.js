@@ -28,18 +28,12 @@ angular.module('editor',[
 
     this.up = function(target, index) {
         if( target.length < 2 || index == 0 ) return;
-        console.log(target);
-        var temp = target.splice(index, 1);
-        console.log(temp);
-        console.log(target);
-        target.splice(index - 1, 0, temp);
-        console.log(target);
+        target.splice(index - 1, 2, target[index], target[index - 1]);
     };
 
     this.down = function(target, index) {
         if( target.length < 2 || index == target.length - 1 ) return;
-        var temp = target.splice(index, 1);
-        target.splice(index, 0, temp);
+        target.splice(index, 2, target[index + 1], target[index]);
     };
 }])
 
