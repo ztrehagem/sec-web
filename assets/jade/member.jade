@@ -7,8 +7,14 @@ block contents
     section#member(ng-controller="memberController as c")
         h3 MEMBER
         div.inner
-            article(ng-repeat="a in c.list")
+            article(ng-repeat="a in c.list" ng-click="c.toggle(a)")
                 img(ng-src="{{a.image[0] || 'img/noimg.png'}}")
                 h4(ng-bind="a.name")
-                // click -> modal(detail)
+                - /* ngAnimate */
+                div.backdrop(ng-cloak ng-if="a.open" ng-click="c.toggle(a,$event)")
+                    div.modal(ng-click="$event.stopPropagation()")
+                        div {{a.name}}
+                        div {{a.playing}}
+                        div {{a.data}}
+                        div {{a.comment}}
     div.lines

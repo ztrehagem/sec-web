@@ -38,6 +38,27 @@ section#member {
             &:not(:hover) h4 {
                 opacity: 0;
             }
+
+            .backdrop {
+                z-index: 10;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba( 0, 0, 0, 0.7 );
+            }
+
+            .modal {
+                position: relative;
+                background-color: $light;
+                box-shadow: 0 0 5px $light;
+                color: $dark;
+                display: table;
+                margin: 1rem auto;
+                padding: 1rem;
+                border-radius: 5px;
+            }
         }
     }
 }

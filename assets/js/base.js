@@ -24,6 +24,11 @@ angular.module('app',[
 
     this.list = null;
 
+    this.toggle = function(target, event) {
+        target.open = !target.open;
+        event && event.stopPropagation();
+    }
+
     $resource('json/member.json').query(function(data) {
         c.list = data;
     });
