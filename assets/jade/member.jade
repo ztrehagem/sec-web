@@ -9,6 +9,6 @@ block contents
         div.inner
             article(ng-repeat="a in c.list")
                 img(ng-src="{{a.image[0] || 'img/noimg.png'}}")
-                // hover -> tooltop(name)
+                h4(ng-bind="a.name")
                 // click -> modal(detail)
     div.lines

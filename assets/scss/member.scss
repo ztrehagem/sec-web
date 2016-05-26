@@ -13,11 +13,30 @@ section#member {
             box-shadow: 0 0 5px $light;
             margin: 5px;
             word-wrap: break-word;
+            position: relative;
 
             img {
                 width: 100%;
                 vertical-align: bottom;
                 border: none;
+            }
+
+            h4 {
+                opacity: 1.0;
+                transition: $transition;
+
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                background-color: $light;
+                color: $dark;
+            }
+
+            &:not(:hover) h4 {
+                opacity: 0;
             }
         }
     }
