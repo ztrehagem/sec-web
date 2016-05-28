@@ -1,18 +1,23 @@
 @import "_import.scss";
 
+html {
+    font-size: inherit;
+}
+
 body {
+    font-size: inherit;
     font-family: 'Sarpanch', Meiryo, 'Hiragino Kaku Gothic ProN', sans-serif;
     background-color: $dark;
     color: $light;
     margin: 0;
     padding: 0;
 
-    * {
-        box-sizing: border-box;
-    }
-
     a {
         color: $light;
+
+        &:hover {
+            color: $light;
+        }
     }
 }
 
@@ -66,8 +71,11 @@ header {
 }
 
 nav {
+    margin: 1rem 0;
+
     ul {
         list-style: none;
+        margin: 0;
         padding: 0;
         display: flex;
         justify-content: center;
@@ -91,6 +99,7 @@ nav {
                 box-shadow: inset 0 0 5px $light;
 
                 &:hover, &.here {
+                    text-decoration: none;
                     background-color: $light;
                     color: $dark;
                 }
@@ -106,6 +115,7 @@ nav {
 section {
     h3 {
         text-align: center;
+        margin: 1rem 0 2rem;
     }
 
     .inner {

@@ -1,6 +1,7 @@
 angular.module('app',[
     'ngResource',
-    'ngSanitize'
+    'ngSanitize',
+    'ui.bootstrap'
 ])
 
 .filter('parseParagraph', ['$sce', function( $sce ) {
@@ -19,19 +20,40 @@ angular.module('app',[
     });
 }])
 
-.controller('memberController', ['$resource', function($resource) {
+.controller('memberController', ['$scope', '$resource', '$uibModal', function($scope, $resource, $uibModal) {
     var c = this;
 
     this.list = null;
 
-    this.toggle = function(target, event) {
-        target.open = !target.open;
-        event && event.stopPropagation();
+    this.modal = function(target) {
+        $uibModal.open({
+            templateUrl: 'member_modal.html',
+            controller: 'memberModalController as modal',
+            resolve: {data: target}
+        });
     }
 
     $resource('json/member.json').query(function(data) {
-        c.list = data;
+        c.list = shuffle(data);
+
+        function shuffle(array) {
+            var n = array.length, t, i;
+
+            while (n) {
+                i = Math.floor(Math.random() * n--);
+                t = array[n];
+                array[n] = array[i];
+                array[i] = t;
+            }
+
+            return array;
+        }
     });
+}])
+
+.controller('memberModalController', ['$uibModalInstance', 'data', function($uibModalInstance, data) {
+    this.data = data;
+    this.close = $uibModalInstance.close
 }])
 
 ;
