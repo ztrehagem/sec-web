@@ -1,22 +1,17 @@
-extends _layout
-block var
-    - page.name = 'activity'
-    - page.title = 'ACTIVITY'
-block contents
-    div.lines
-    section#activity(ng-controller="activityController as c")
-        h3 ACTIVITY
-        div.inner
-            article(ng-repeat="a in c.list")
-                div.heading
-                    h4(ng-bind="a.title")
-                    h5(ng-bind="a.date")
-                div.images
-                    a.image(ng-repeat="filename in a.images" ng-href="./img/{{filename}}" target="_blank")
-                        img(ng-src="./img/{{filename}}")
-                div.description
-                    p(ng-repeat="p in a.description")
-                        span(ng-bind-html="p|parseParagraph")
-                div.links
-                    a(ng-repeat="link in a.links" ng-href="{{link[1]}}" target="_blank" ng-bind="link[0]")
-    div.lines
+div.lines
+section#activity(ng-controller="activityController as c")
+    h3 ACTIVITY
+    div.inner
+        article(ng-repeat="a in c.list")
+            div.heading
+                h4(ng-bind="a.title")
+                h5(ng-bind="a.date")
+            div.images
+                a.image(ng-repeat="filename in a.images" ng-href="./img/{{filename}}" target="_blank")
+                    img(ng-src="./img/{{filename}}")
+            div.description
+                p(ng-repeat="p in a.description")
+                    span(ng-bind-html="p|parseParagraph")
+            div.links
+                a(ng-repeat="link in a.links" ng-href="{{link[1]}}" target="_blank" ng-bind="link[0]")
+div.lines

@@ -1,8 +1,29 @@
 angular.module('app',[
     'ngResource',
     'ngSanitize',
+    'ui.router',
     'ui.bootstrap'
 ])
+
+.config(['$locationProvider', function($locationProvider) {
+  $locationProvider.html5Mode(true);
+}])
+
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider
+  .state('top', {
+    url: '/',
+    templateUrl: 'top.html'
+  })
+  .state('activity', {
+    url: '/activity',
+    templateUrl: 'activity.html'
+  })
+  .state('member', {
+    url: '/member',
+    templateUrl: 'member.html'
+  });
+}])
 
 .filter('parseParagraph', ['$sce', function( $sce ) {
 	return function( input ) {

@@ -1,27 +1,38 @@
-extends _layout
-block var
-    - page.name = 'index'
-    - page.title = 'TOP'
-block contents
-    div.lines
-    section#about
-        h3 ABOUT
-        div.inner
-            p 芝浦工業大学非公式サークル。芝浦工業大学非公式サークル。芝浦工業大学非公式サークル。芝浦工業大学非公式サークル。芝浦工業大学非公式サークル。芝浦工業大学非公式サークル。芝浦工業大学非公式サークル。
-            p LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。LoL学生大会に参加。
-    div.lines
-    section#news
-        h3 WHAT'S NEW
-        div.inner.fit
-            article
-                h4 部員募集中！
-                p LoLプレイヤー募集中！
-                p メンバー一覧は<a href="./member.html">こちら</a>
-    div.lines
-    section#contact
-        h3 CONTACT
-        div.inner.fit
-            p 入部希望やお問い合わせは、以下のメールアドレスもしくは公式Twitterアカウントまで！
-            p.text-center sitesportsclub@gmail.com
-        div.inner.fit <a class="twitter-timeline" href="https://twitter.com/sitesportsclub" data-widget-id="733916792263843840">@sitesportsclubさんのツイート</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    div.lines
+doctype
+html(lang="ja" ng-app="app")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width,initial-scale=1.0")
+        base(href="/")
+        link(rel="stylesheet" href="./lib/bootstrap.min.css")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Sarpanch" rel="stylesheet" type="text/css")
+        link(rel="stylesheet" href="./css/base.css")
+        link(rel="stylesheet" href="./css/index.css")
+        link(rel="stylesheet" href="./css/activity.css")
+        link(rel="stylesheet" href="./css/member.css")
+        script(src="./lib/angular.min.js")
+        script(src="./lib/angular-sanitize.min.js")
+        script(src="./lib/angular-resource.min.js")
+        script(src="./lib/angular-ui-router.min.js")
+        script(src="./lib/ui-bootstrap-tpls.min.js")
+        script(src="./js/base.min.js")
+        title SIT e-Sports Club
+    body
+        div#wrapper
+            header
+                div.title
+                    h1 SEC
+                    h2 SIT e-Sports Club
+                div.link
+                    a(href="https://twitter.com/sitesportsclub" target="_blank")
+                        i.fa.fa-fw.fa-twitter
+            nav
+                ul
+                    li: a(href="./" ui-sref="top") TOP
+                    li: a(href="./activity.html" ui-sref="activity") ACTIVITY
+                    li: a(href="./member.html" ui-sref="member") MEMBER
+            div(ui-view)
+            footer
+                i.fa.fa-fw.fa-copyright
+                span SEC

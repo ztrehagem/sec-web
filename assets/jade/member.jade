@@ -1,14 +1,9 @@
-extends _layout
-block var
-    - page.name = 'member'
-    - page.title = 'MEMBER'
-block contents
-    div.lines
-    section#member(ng-controller="memberController as c")
-        h3 MEMBER
-        div.inner
-            article(ng-repeat="a in c.list")
-                div.thumb(ng-click="c.modal(a)")
-                    img(ng-src="{{'img/member/'+a.image || 'img/noimg.png'}}")
-                    h4(ng-bind="a.name")
-    div.lines
+div.lines
+section#member(ng-controller="memberController as c")
+    h3 MEMBER
+    div.inner
+        article(ng-repeat="a in c.list")
+            div.thumb(ng-click="c.modal(a)")
+                img(ng-src="{{'img/member/'+a.image || 'img/noimg.png'}}")
+                h4(ng-bind="a.name")
+div.lines
