@@ -7,7 +7,7 @@ block contents
     section#activity(ng-controller="activityController as c")
         h3 ACTIVITY
         div.inner
-            article(ng-repeat="a in c.list")
+            article(ng-repeat="a in c.list" ng-cloak)
                 div.heading
                     h4(ng-bind="a.title")
                     h5(ng-bind="a.date")

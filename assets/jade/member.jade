@@ -7,7 +7,7 @@ block contents
     section#member(ng-controller="memberController as c")
         h3 MEMBER
         div.inner
-            article(ng-repeat="a in c.list")
+            article(ng-repeat="a in c.list" ng-cloak)
                 div.thumb(ng-click="c.modal(a)")
                     img(ng-src="{{'img/member/'+a.image || 'img/noimg.png'}}")
                     h4(ng-bind="a.name")
