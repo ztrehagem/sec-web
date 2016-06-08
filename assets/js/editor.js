@@ -10,6 +10,10 @@ angular.module('editor',[
 .controller('editorController', ['$resource', function($resource) {
     var c = this;
 
+    this.test = function() {
+      alert('this is base');
+    };
+
     this.list = null;
 
     this.insertBefore = function(parent, propname, obj) {
@@ -105,6 +109,15 @@ angular.module('editor',[
             window.URL.revokeObjectURL(url);
         };
     }());
+}])
+
+.controller('test', ['$controller', function Test($controller) {
+  Object.setPrototypeOf(this, $controller('editorController'));
+
+  this.click = function() {
+    this.test();
+    alert('this is extend');
+  };
 }])
 
 ;

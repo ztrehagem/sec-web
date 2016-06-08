@@ -113,3 +113,5 @@ html(lang="ja" ng-app="editor")
                                 label COMMENT
                                 input(type="text" ng-model="a.comment")
             div.lines
+                section(ng-controller="test as t")
+                    button(ng-click="t.click()") click
