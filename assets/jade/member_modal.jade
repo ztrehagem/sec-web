@@ -4,17 +4,14 @@ div.name
     h4(ng-bind="modal.data.name")
 div.image(ng-if="modal.data.image")
     img(ng-src="img/member/{{modal.data.image}}")
-table
-    tr(ng-if="modal.data.playing")
-        td PLAYING
-        td: ul: li(ng-repeat="title in modal.data.playing" ng-bind="title")
-    tr(ng-if="modal.data.twitter")
-        td
-            i.fa.fa-fw.fa-twitter
-            span twitter
-        td
-            a(target="_blank" ng-href="https://twitter.com/{{modal.data.twitter}}" ng-bind="'@'+modal.data.twitter")
-    tr(ng-repeat="d in modal.data.data")
-        td(ng-bind="d[0]")
-        td(ng-bind="d[1]")
+dl
+    div(ng-if="modal.data.playing")
+        dt PLAYING
+        dd: ul: li(ng-repeat="title in modal.data.playing" ng-bind="title")
+    div(ng-if="modal.data.twitter")
+        dt: i.fa.fa-fw.fa-twitter
+        dd: a(target="_blank" ng-href="https://twitter.com/{{modal.data.twitter}}" ng-bind="'@'+modal.data.twitter")
+    div(ng-repeat="d in modal.data.data")
+        dt(ng-bind="d[0]")
+        dd(ng-bind="d[1]")
 div.comment {{modal.data.comment}}
