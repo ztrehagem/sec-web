@@ -113,10 +113,16 @@ section#member {
 
         div {
             margin-top: 0.7rem;
+
+            > * {
+                float: left;
+            }
+
+            @include clearfix;
         }
 
         dd {
-            padding-left: 2rem;
+            padding-left: 1rem;
         }
 
         a {

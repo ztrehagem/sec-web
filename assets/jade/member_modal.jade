@@ -6,10 +6,12 @@ div.image(ng-if="modal.data.image")
     img(ng-src="img/member/{{modal.data.image}}")
 dl
     div(ng-if="modal.data.playing")
-        dt PLAYING
+        dt Playing
         dd: ul: li(ng-repeat="title in modal.data.playing" ng-bind="title")
     div(ng-if="modal.data.twitter")
-        dt: i.fa.fa-fw.fa-twitter
+        dt
+            i.fa.fa-fw.fa-twitter
+            span Twitter
         dd: a(target="_blank" ng-href="https://twitter.com/{{modal.data.twitter}}" ng-bind="'@'+modal.data.twitter")
     div(ng-repeat="d in modal.data.data")
         dt(ng-bind="d[0]")

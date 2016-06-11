@@ -5,9 +5,9 @@ angular.module('app',[
 ])
 
 .filter('parseParagraph', ['$sce', function( $sce ) {
-	return function( input ) {
-		return $sce.trustAsHtml(input.join('<br>'));
-	};
+    return function( input ) {
+        return $sce.trustAsHtml(input.join('<br>'));
+    };
 }])
 
 .controller('activityController', ['$resource', function($resource) {
