@@ -6,10 +6,13 @@ modules.app.main = angular.module('app.main', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'common'
 ]);
 
-modules.app.editor = angular.module('editor', [
+modules.app.editor = angular.module('app.editor', [
   'ngResource',
   'ngSanitize'
 ]);
+
+modules.common = angular.module('common', []);

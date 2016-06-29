@@ -1,0 +1,41 @@
+<div class="close">
+    <a class="btn btn-default" ng-click="modal.close()">
+        <i class="fa fa-fw fa-times"></i>
+    </a>
+</div>
+
+<div class="name">
+    <h4 ng-bind="modal.data.name"></h4>
+</div>
+
+<div class="image">
+    <img ng-src="img/member/{{modal.data.image}}">
+</div>
+
+<dl>
+    <div ng-if="modal.data.playing">
+        <dt>Playing</dt>
+        <dd>
+            <ul>
+                <li ng-repeat="title in modal.data.playing" ng-bind="title"></li>
+            </ul>
+        </dd>
+    </div>
+
+    <div ng-if="modal.data.twitter">
+        <dt>
+            <i class="fa fa-fw fa-twitter"></i>
+            <span>Twitter</span>
+        </dt>
+        <dd>
+            <a target="_blank" ng-href="https://twitter.com/{{modal.data.twitter}}" ng-bind="'@' + modal.data.twitter"></a>
+        </dd>
+    </div>
+
+    <div ng-repeat="d in modal.data.data">
+        <dt ng-bind="d[0]"></dt>
+        <dd ng-bind="d[1]"></dd>
+    </div>
+</dl>
+
+<div class="comment" ng-bind="modal.data.comment"></div>

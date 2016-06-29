@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app.main">
+<html lang="ja" ng-app="app.main">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -33,13 +33,13 @@
 
         <nav>
             <ul>
-                <li><a href="#">TOP</a></li>
-                <li><a href="#">ACTIVITY</a></li>
-                <li><a href="#">MEMBER</a></li>
+                <li><a ui-sref="top">TOP</a></li>
+                <li><a ui-sref="activity">ACTIVITY</a></li>
+                <li><a ui-sref="member">MEMBER</a></li>
             </ul>
         </nav>
 
-        <div data-hoge="ui-view">
+        <div ui-view>
 
         </div>
 

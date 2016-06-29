@@ -1,0 +1,32 @@
+<div class="lines"></div>
+
+<section id="activity" ng-controller="activityController as c">
+    <h3>ACTIVITY</h3>
+
+    <div class="inner">
+        <article ng-repeat="a in c.list" ng-cloak>
+            <div class="heading">
+                <h4 ng-bind="a.title"></h4>
+                <h5 ng-bind="a.date"></h5>
+            </div>
+
+            <div class="images">
+                <a class="image" ng-repeat="filename in a.images" ng-href="/img/{{filename}}" target="_blank">
+                    <img ng-src="/img/{{filename}}">
+                </a>
+            </div>
+
+            <div class="description">
+                <p ng-repeat="p in a.description">
+                    <span ng-bind-html="p|parseParagraph"></span>
+                </p>
+            </div>
+
+            <div class="links">
+                <a ng-repeat="link in a.links" ng-href="{{link[1]}}" target="_blank" ng-bind="link[0]"></a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<div class="lines"></div>

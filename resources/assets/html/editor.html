@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="app.editor">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Sarpanch" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/app.editor.css">
+    <script src="./lib/angular.min.js"></script>
+    <script src="./lib/angular-sanitize.min.js"></script>
+    <script src="./lib/angular-resource.min.js"></script>
+    <script src="./js/app.js"></script>
+    <title>SIT e-Sports Club | EDITOR</title>
+</head>
+<body>
+    <div id="wrapper">
+        <section id="activity-editor" ng-controller="activityEditorController as c">
+            <h3>ACTIVITY EDITOR</h3>
+
+            <div class="inner fit">
+                <button ng-click="c.load()">LOAD &amp; INITIALIZE</button>
+                <button ng-if="c.list" ng-click="c.download()">
+                    <i class="fa fa-fw fa-download"></i>
+                    <span>DOWNLOAD</span>
+                </button>
+            </div>
+
+            <div class="inner fit">
+                <button ng-if="c.list" ng-click="c.insertBefore(c,'list',{})">
+                    <i class="fa fa-fw fa-plus"></i>
+                    <span>ADD</span>
+                </button>
+            </div>
+
+            <div class="inner">
+                <article class="panel" ng-repeat="a in c.list track by $index" ng-init="open">
+                    <div class="panel-heading clickable" ng-click="open = !open">
+                        <i class="fa fa-fw fa-caret-up" ng-if="open"></i>
+                        <i class="fa fa-fw fa-caret-down" ng-if="!open"></i>
+                        <span class="panel-title">{{a.title}} [{{a.date}}]</span>
+                        <button class="delete" ng-click="c.delete(c.list,$index);$event.stopPropagation()">
+                            <i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="list-group" ng-if="open">
+                        <div class="list-group-item form-group">
+                            <label>TITLE</label>
+                            <input type="text" ng-model="a.title">
+                        </div>
+
+                        <div class="list-group-item form-group">
+                            <label>DATE</label>
+                            <input type="text" ng-model="a.date">
+                        </div>
+
+                        <div class="list-group-item form-group">
+                            <label>DESCRIPTION</label>
+                            <textarea rows="6" ng-model="a.description"></textarea>
+                        </div>
+
+                        <div class="list-group-item">
+                            <label>LINKS</label>
+                            <div class="form-group" ng-repeat="link in a.link track by $index">
+                                <input type="text" ng-model="link[0]">
+                                <input type="text" ng-model="link[1]">
+                                <button ng-click="c.up(a.links,$index)">
+                                    <i class="fa fa-fw fa-angle-up"></i>
+                                </button>
+                                <button ng-click="c.down(a.links,$index)">
+                                    <i class="fa fa-fw fa-angle-down"></i>
+                                </button>
+                                <button ng-click="c.delete(a.links,$index)">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </button>
+                            </div>
+                            <button ng-click="c.insertAfter(a,'images','')">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span>ADD</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="lines"></div>
+
+        <section id="member-editor" ng-controller="memberEditorController as c">
+            <h3>MEMBER EDITOR</h3>
+
+            <div class="inner fit">
+                <button ng-click="c.load()">LOAD &amp; INITIALIZE</button>
+                <button ng-if="c.list" ng-click="c.download()">
+                    <i class="fa fa-fw fa-download"></i>
+                    <span>DOWNLOAD</span>
+                </button>
+            </div>
+
+            <div class="inner fit">
+                <button ng-if="c.list" ng-click="c.insertBefore(c,'list',{})">
+                    <i class="fa fa-fw fa-plus"></i>
+                    <span>ADD</span>
+                </button>
+            </div>
+
+            <div class="inner">
+                <article class="panel" ng-repeat="a in c.list track by $index" ng-init="open">
+                    <div class="panel-heading clickable" ng-click="open = !open">
+                        <i class="fa fa-fw fa-caret-up" ng-if="open"></i>
+                        <i class="fa fa-fw fa-caret-down" ng-if="!open"></i>
+                        <span class="panel-title">{{a.name}}</span>
+                        <button class="delete" ng-click="c.delete(c.list,$index);$event.stopPropagation()">
+                            <i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="list-group" ng-if="open">
+                        <div class="list-group-item form-group">
+                            <label>NAME</label>
+                            <input type="text" ng-model="a.name">
+                        </div>
+
+                        <div class="list-group-item">
+                            <label>PLAYING</label>
+                            <div class="form-group" ng-repeat="title in a.playing track by $index">
+                                <input type="text" ng-model="title">
+                                <button ng-click="c.up(a.playing,$index)"><i class="fa fa-fw fa-angle-up"></i></button>
+                                <button ng-click="c.down(a.playing,$index)"><i class="fa fa-fw fa-angle-down"></i></button>
+                                <button ng-click="c.delete(a.playing,$index)"><i class="fa fa-fw fa-times"></i></button>
+                            </div>
+                            <button ng-click="c.insertAfter(a,'data',[])">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span>ADD</span>
+                            </button>
+                        </div>
+
+                        <div class="list-group-item form-group">
+                            <label>COMMENT</label>
+                            <input type="text" ng-model="a.comment">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
