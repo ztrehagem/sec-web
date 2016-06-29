@@ -16,14 +16,14 @@ modules.app.main
     });
 }])
 
-.controller('memberController', ['$scope', '$resource', '$uibModal', function($scope, $resource, $uibModal) {
+.controller('memberController', ['$scope', '$resource', '$uibModal', 'assetPath', function($scope, $resource, $uibModal, assetPath) {
     var c = this;
 
     this.list = null;
 
     this.modal = function(target) {
         $uibModal.open({
-            templateUrl: 'member_modal.html',
+            templateUrl: assetPath.template('member-modal'),
             controller: 'memberModalController as modal',
             resolve: {data: target}
         });
