@@ -1,7 +1,4 @@
-angular.module('editor',[
-    'ngResource',
-    'ngSanitize'
-])
+modules.app.editor
 
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(blob):/);

@@ -1,3 +1,4 @@
-/css/*.css
-/js/*.js
-/*.html
+node_modules
+public/css
+public/js
+public/**/*.html

@@ -1,8 +1,4 @@
-angular.module('app',[
-    'ngResource',
-    'ngSanitize',
-    'ui.bootstrap'
-])
+modules.app.main
 
 .filter('parseParagraph', ['$sce', function( $sce ) {
     return function( input ) {
