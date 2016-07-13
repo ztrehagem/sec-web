@@ -9,6 +9,15 @@ modules.app
 
     this.list = null;
 
+    this.create = function(article) {
+      return {
+        data: article || {},
+        toggle: function() { this.open = !this.open; },
+        isOpen: function() { return this.open; },
+        isClose: function() { return !this.open; }
+      };
+    };
+
     this.insertBefore = function(parent, propname, obj) {
         parent[propname] = parent[propname] || [];
         parent[propname].unshift(obj);
@@ -34,74 +43,72 @@ modules.app
     };
 }])
 
-.controller('activityEditorController', ['$resource', '$controller', '$window', function($resource, $controller, $window) {
+.controller('activityEditorController', ['$resource', '$controller', '$window', 'downloader', function($resource, $controller, $window, downloader) {
     angular.extend(this, $controller('editorController'));
 
-    var c = this;
+    var that = this;
 
     this.load = function() {
-        $resource('json/activity.json').query(function(data) {
-            angular.forEach(data, function(article) {
-                var paragraphs = article.description.map(function(paragraph) {
-                    return paragraph.join('\n');
-                });
-                article.description = paragraphs.join('\n\n');
-            });
-            c.list = data;
-        });
+      $resource('json/activity.json').query(function(jsonObj) {
+        that.list = decode(jsonObj);
+      });
     };
 
-    this.download = (function () {
-        var a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-        return function () {
-            var data = angular.copy(this.list);
-            angular.forEach(data, function(article) {
-                if( !article.description ) return;
-                var paragraphs = article.description.split('\n\n');
-                article.description = paragraphs.map(function(paragraph) {
-                    return paragraph.split('\n');
-                });
-            });
+    this.download = downloader.create('activity.json', function() {
+      return angular.toJson(encode(that.list), true);
+    });
 
-            var json = angular.toJson(data, true);
-            var blob = new Blob([json], {type: "octet/stream"});
-            var url = window.URL.createObjectURL(blob);
-            a.href = url;
-            a.download = 'activity.json';
-            a.click();
-            window.URL.revokeObjectURL(url);
-        };
-    }());
+    function decode(jsonObj) {
+      return jsonObj.map(function(article) {
+        article.description = convertArrayToText(article.description);
+        return that.create(article);
+      });
+    }
+
+    function encode(displayObj) {
+      return displayObj.map(function(article) {
+        article.data.description = convertTextToArray(article.data.description);
+        return article.data;
+      });
+    }
+
+    function convertArrayToText(array) {
+      return array && array.map(function(paragraph) {
+        return paragraph.join('\n');
+      }).join('\n\n');
+    }
+
+    function convertTextToArray(text) {
+      return text && text.split('\n\n').map(function(paragraph) {
+        return paragraph.split('\n');
+      });
+    }
 }])
 
-.controller('memberEditorController', ['$resource', '$controller', '$window', function($resource, $controller, $window) {
+.controller('memberEditorController', ['$resource', '$controller', '$window', 'downloader', function($resource, $controller, $window, downloader) {
     angular.extend(this, $controller('editorController'));
 
-    var c = this;
+    var that = this;
 
     this.load = function() {
-        $resource('json/member.json').query(function(data) {
-            c.list = data;
-        });
+      $resource('json/member.json').query(function(jsonObj) {
+        that.list = decode(jsonObj);
+      });
     };
 
-    this.download = (function () {
-        var a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-        return function () {
-            var data = angular.copy(this.list);
-            var json = angular.toJson(data, true);
-            var blob = new Blob([json], {type: "octet/stream"});
-            var url = window.URL.createObjectURL(blob);
-            a.href = url;
-            a.download = 'member.json';
-            a.click();
-            window.URL.revokeObjectURL(url);
-        };
-    }());
-}])
+    this.download = downloader.create('member.json', function() {
+      return angular.toJson(encode(that.list), true);
+    });
 
-;
+    function decode(jsonObj) {
+      return jsonObj.map(function(article) {
+        return that.create(article);
+      });
+    }
+
+    function encode(displayObj) {
+      return displayObj.map(function(article) {
+        return article.data;
+      });
+    }
+}]);
