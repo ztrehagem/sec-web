@@ -1,4 +1,4 @@
-modules.app.main
+modules.app
 
 .config(['$urlRouterProvider', function($urlRouterProvider) {
   $urlRouterProvider.when('', '/');

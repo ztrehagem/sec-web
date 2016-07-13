@@ -1,4 +1,4 @@
-modules.app.editor
+modules.app
 
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(blob):/);

@@ -1,4 +1,4 @@
-modules.app.main
+modules.app
 
 .filter('parseParagraph', ['$sce', function( $sce ) {
     return function( input ) {
