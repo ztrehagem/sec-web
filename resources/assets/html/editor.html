@@ -61,7 +61,7 @@
 
                         <div class="list-group-item">
                             <label>LINKS</label>
-                            <div class="form-group" ng-repeat="link in a.link track by $index">
+                            <div class="form-group" ng-repeat="link in a.links track by $index">
                                 <input type="text" ng-model="link[0]">
                                 <input type="text" ng-model="link[1]">
                                 <button ng-click="c.up(a.links,$index)">
@@ -71,6 +71,26 @@
                                     <i class="fa fa-fw fa-angle-down"></i>
                                 </button>
                                 <button ng-click="c.delete(a.links,$index)">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </button>
+                            </div>
+                            <button ng-click="c.insertAfter(a,'links',[])">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span>ADD</span>
+                            </button>
+                        </div>
+
+                        <div class="list-group-item">
+                            <label>IMAGE FILENAME</label>
+                            <div class="form-group" ng-repeat="filename in a.images track by $index">
+                                <input type="text" ng-model="filename">
+                                <button ng-click="c.up(a.images,$index)">
+                                    <i class="fa fa-fw fa-angle-up"></i>
+                                </button>
+                                <button ng-click="c.down(a.images,$index)">
+                                    <i class="fa fa-fw fa-angle-down"></i>
+                                </button>
+                                <button ng-click="c.delete(a.images,$index)">
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -128,6 +148,21 @@
                                 <button ng-click="c.up(a.playing,$index)"><i class="fa fa-fw fa-angle-up"></i></button>
                                 <button ng-click="c.down(a.playing,$index)"><i class="fa fa-fw fa-angle-down"></i></button>
                                 <button ng-click="c.delete(a.playing,$index)"><i class="fa fa-fw fa-times"></i></button>
+                            </div>
+                            <button ng-click="c.insertAfter(a,'playing','')">
+                                <i class="fa fa-fw fa-plus"></i>
+                                <span>ADD</span>
+                            </button>
+                        </div>
+
+                        <div class="list-group-item">
+                            <label>DATA</label>
+                            <div class="form-group" ng-repeat="data in a.data track by $index">
+                                <input type="text" ng-model="data[0]">
+                                <input type="text" ng-model="data[1]">
+                                <button ng-click="c.up(a.data,$index)"><i class="fa fa-fw fa-angle-up"></i></button>
+                                <button ng-click="c.down(a.data,$index)"><i class="fa fa-fw fa-angle-down"></i></button>
+                                <button ng-click="c.delete(a.data,$index)"><i class="fa fa-fw fa-times"></i></button>
                             </div>
                             <button ng-click="c.insertAfter(a,'data',[])">
                                 <i class="fa fa-fw fa-plus"></i>
