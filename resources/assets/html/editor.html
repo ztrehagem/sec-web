@@ -84,7 +84,7 @@
                         <div class="list-group-item">
                             <label>IMAGE FILENAME</label>
                             <div class="form-group" ng-repeat="filename in a.data.images track by $index">
-                                <input type="text" ng-model="filename">
+                                <input type="text" ng-model="a.data.images[$index]">
                                 <button ng-click="c.up(a.data.images,$index)">
                                     <i class="fa fa-fw fa-angle-up"></i>
                                 </button>
@@ -145,7 +145,7 @@
                         <div class="list-group-item">
                             <label>PLAYING</label>
                             <div class="form-group" ng-repeat="title in a.data.playing track by $index">
-                                <input type="text" ng-model="title">
+                                <input type="text" ng-model="a.data.playing[$index]">
                                 <button ng-click="c.up(a.data.playing,$index)"><i class="fa fa-fw fa-angle-up"></i></button>
                                 <button ng-click="c.down(a.data.playing,$index)"><i class="fa fa-fw fa-angle-down"></i></button>
                                 <button ng-click="c.delete(a.data.playing,$index)"><i class="fa fa-fw fa-times"></i></button>
