@@ -1,27 +1,17 @@
-var createTemplateResouces = require('./gulp-template/resources.js');
-var defineTemplateTasks = require('./gulp-template/tasks.js');
+var Resource = require('./gulp-template/resource.js');
+var GulpTask = require('./gulp-template/gulp-task.js');
 
-var assetsDir = 'resources/assets/';
-var destDir = 'public/';
+Resource.add('sass', Resource.defaults.sass());
+Resource.add('html', Resource.defaults.html());
 
-var resources = createTemplateResouces(assetsDir, destDir);
+['main', 'editor'].forEach(function(moduleName) {
+  Resource.add('js', new Resource.Builder()
+    .src('js/' + moduleName + '/*.js')
+    .src('js/' + moduleName + '/*/**/*.js')
+    .dest('js/')
+    .concat(true)
+    .destfile('app.' + moduleName + '.js')
+  );
+});
 
-!function setJsResources() {
-  var jsModuleNames = ['main','editor'];
-
-  resources.js = [];
-
-  jsModuleNames.forEach(function(moduleName) {
-    resources.js.push({
-      src: [
-        assetsDir + 'js/' + moduleName + '/*.js',
-        assetsDir + 'js/' + moduleName + '/*/**/*.js'
-      ],
-      dest: destDir + 'js/',
-      concat: true,
-      destfile: 'app.' + moduleName + '.js'
-    });
-  });
-}();
-
-defineTemplateTasks(resources);
+GulpTask.defineDefaults();
